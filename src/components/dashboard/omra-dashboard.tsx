@@ -87,6 +87,7 @@ interface DashboardProps {
   onNotificationClick: () => void;
   onUserMenuClick: () => void;
   onSearchSubmit: (query: string) => void;
+  onLogout: () => void;
 }
 
 interface SidebarItem {
@@ -333,7 +334,8 @@ export const Dashboard = ({
   onAddAsset, 
   onNotificationClick, 
   onUserMenuClick, 
-  onSearchSubmit 
+  onSearchSubmit,
+  onLogout
 }: DashboardProps) => {
   const [activeSection, setActiveSection] = useState('dashboard');
   const [searchQuery, setSearchQuery] = useState('');
@@ -2988,9 +2990,9 @@ ${userName}
                   {card.value}
                 </div>
                 <div className={`text-sm flex items-center gap-1 ${
-                  card.changeType === 'increase' ? 'text-green-600' : 
-                  card.changeType === 'decrease' ? 'text-red-600' : 
-                  'text-muted-foreground'
+                  card.changeType === 'increase' ? 'text-green-600' :
+                  card.changeType === 'neutral' ? 'text-muted-foreground' :
+                  'text-red-600'
                 }`}>
                   {card.changeType === 'increase' && <TrendingUp className="w-3 h-3" />}
                   {card.change}
@@ -3333,6 +3335,15 @@ ${userName}
                 >
                   <User className="w-5 h-5" />
                   <span className="hidden md:block">{userName}</span>
+                </Button>
+                
+                <Button 
+                  variant="ghost" 
+                  onClick={onLogout}
+                  className="flex items-center gap-2"
+                >
+                  <LogOut className="w-5 h-5" />
+                  <span className="hidden md:block">Log Out</span>
                 </Button>
               </div>
             </div>

@@ -122,6 +122,7 @@ export default function HomePage() {
         onNotificationClick={handleNotificationClick}
         onUserMenuClick={handleUserMenuClick}
         onSearchSubmit={handleSearchSubmit}
+        onLogout={handleBackToLanding}
       />
     )
   }

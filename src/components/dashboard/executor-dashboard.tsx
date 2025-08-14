@@ -23,7 +23,6 @@ import {
   User,
   Copy,
   LogOut,
-  Device,
   AlertTriangle,
   Timer
 } from 'lucide-react';
@@ -44,11 +43,11 @@ export const ExecutorDashboard: React.FC<ExecutorDashboardProps> = ({ userName, 
   const [activeSection, setActiveSection] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [privateNotes, setPrivateNotes] = useState('Initial review completed. Death certificate verified. Proceeding with asset distribution.');
-  const [distributionConfirmations, setDistributionConfirmations] = useState({
-    'house': false,
-    'car': true,
-    'savings': false,
-    'investments': true
+  const [distributionConfirmations, setDistributionConfirmations] = useState<Record<string, boolean>>({
+    house: false,
+    car: true,
+    savings: false,
+    investments: true,
   });
 
   const sidebarItems = [
